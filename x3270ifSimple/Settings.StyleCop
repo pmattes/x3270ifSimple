@@ -1,0 +1,10 @@
+<StyleCopSettings Version="105">
+  <GlobalSettings>
+    <BooleanProperty Name="ViolationsAsErrors">True</BooleanProperty>
+    <CollectionProperty Name="RecognizedWords">
+      <Value>Intrinsics</Value>
+      <Value>ws</Value>
+      <Value>Xt</Value>
+    </CollectionProperty>
+  </GlobalSettings>
+</StyleCopSettings>
