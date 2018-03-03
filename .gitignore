@@ -245,3 +245,6 @@ ModelManifest.xml
 .fake/
 /x3270ifSimple/_exported_templates/default
 /x3270ifSimple/x3270ifSimple-setup.exe
+
+# Setup files.
+*-setup.exe
