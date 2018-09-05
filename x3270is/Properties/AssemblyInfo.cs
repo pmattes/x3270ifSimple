@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("x3270ifSimple")]
+[assembly: AssemblyTitle("x3270is")]
 [assembly: AssemblyDescription("Simple x3270 script interface library")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Paul Mattes")]
-[assembly: AssemblyProduct("x3270ifSimple")]
+[assembly: AssemblyProduct("x3270is")]
 [assembly: AssemblyCopyright("Copyright © 2018 Paul Mattes")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

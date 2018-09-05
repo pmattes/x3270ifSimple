@@ -1,6 +1,6 @@
 
-# X3270ifSimple Introduction
-The x3270ifSimple library is a simple interface between applications and the x3270 emulator family. It can be used in one of two ways:
+# x3270is Introduction
+The x3270is library is a simple interface between applications and the x3270 emulator family. It can be used in one of two ways:
 - To form the glue between an interactive wx3270 or wc3270 session and a scripting process started by the **Script()** action.
 - To start a copy of ws3270 to completely control a host session.
 
@@ -22,14 +22,14 @@ That would cause the emulator to start a copy of `powershell.exe` and pass it `-
 
 Before starting the program, the emulator sets up a socket to accept connections to process commands from the script. The port number is
 passed to the program in the environment variable `X3270PORT`. The socket communication protocol between the script and emulator is
-simple but quite strict. The [WorkerConnection](../api/X3270if.WorkerConnection.html) class in the x3270ifSimple library handles
+simple but quite strict. The [WorkerConnection](../api/X3270is.WorkerConnection.html) class in the x3270is library handles
 all of the details (setting up a socket, formatting and sending actions and decoding the results) so the script can focus on
 doing its work.
 ## Pure Screen Scraping (New Host Session)
-The x3270ifSimple library also supports pure screen scraping. A screen-scraping application starts a copy of ws3270 and uses it
+The x3270is library also supports pure screen scraping. A screen-scraping application starts a copy of ws3270 and uses it
 to connect to a host. It then controls all aspects of the session, such as logging in, entering data and interpreting the results.
-The [NewEmulator](../api/X3270if.NewEmulator.html) class in the x3270ifSimple library handles the details of starting
+The [NewEmulator](../api/X3270is.NewEmulator.html) class in the X3270is library handles the details of starting
 ws3270 and connecting to it, and uses the same methods as `WorkerConnection` to send actions and decode the results.
 # Supported Clients
-x3270ifSimple is a DLL that can be used by any .NET application, such as PowerShell or user-generated C# or VB.NET code. It can
+x3270is is a DLL that can be used by any .NET application, such as PowerShell or user-generated C# or VB.NET code. It can
 also be registed with COM during installation of wx3270 or wc3270, so it can be used with VBScript and JScript.

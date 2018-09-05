@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "x3270ifSimple", "x3270ifSimple\x3270ifSimple.csproj", "{7F0A51E9-AD63-4387-8B0B-91C4DE49A1B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "x3270is", "x3270is\x3270is.csproj", "{7F0A51E9-AD63-4387-8B0B-91C4DE49A1B6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{3C82F479-1D16-467B-9A8E-06FC450B6BA0}"
 EndProject

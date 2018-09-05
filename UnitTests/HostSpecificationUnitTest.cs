@@ -7,7 +7,7 @@ namespace UnitTests
     using System;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using X3270if;
+    using X3270is;
 
     /// <summary>
     /// Test the <see cref="HostSpecification"/> class.

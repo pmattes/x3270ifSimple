@@ -5,10 +5,10 @@
 namespace UnitTests
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using X3270if;
+    using X3270is;
 
     /// <summary>
-    /// Test the <see cref="X3270if.Quote(string)"/> method.
+    /// Test the <see cref="X3270is.Quote(string)"/> method.
     /// </summary>
     [TestClass]
     public class QuoteUnitTest
@@ -19,8 +19,8 @@ namespace UnitTests
         [TestMethod]
         public void QuoteNotNeeded()
         {
-            const string arg = "abc124-=+*&%$^\"\\#@!";
-            Assert.AreEqual(arg, X3270if.Quote(arg));
+            const string Arg = "abc124-=+*&%$^\"\\#@!";
+            Assert.AreEqual(Arg, X3270is.Quote(Arg));
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace UnitTests
         [TestMethod]
         public void QuoteEmpty()
         {
-            Assert.AreEqual("\"\"", X3270if.Quote(string.Empty));
+            Assert.AreEqual("\"\"", X3270is.Quote(string.Empty));
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace UnitTests
             var easy = new[] { "abc 123", "abc,123", "abc)123", "abc(123" };
             foreach (var arg in easy)
             {
-                Assert.AreEqual("\"" + arg + "\"", X3270if.Quote(arg));
+                Assert.AreEqual("\"" + arg + "\"", X3270is.Quote(arg));
             }
         }
 
@@ -52,17 +52,17 @@ namespace UnitTests
         public void QuoteBackslash()
         {
             // Starts with a double quote (but doesn't contain any other trigger characters).
-            Assert.AreEqual("\"\\\"abc\"", X3270if.Quote("\"abc"));
+            Assert.AreEqual("\"\\\"abc\"", X3270is.Quote("\"abc"));
 
             // Double quote in the middle.
-            Assert.AreEqual("\"a bc\\\"def\"", X3270if.Quote("a bc\"def"));
-            Assert.AreEqual("\"a bc\\\"d\\\"ef\"", X3270if.Quote("a bc\"d\"ef"));
+            Assert.AreEqual("\"a bc\\\"def\"", X3270is.Quote("a bc\"def"));
+            Assert.AreEqual("\"a bc\\\"d\\\"ef\"", X3270is.Quote("a bc\"d\"ef"));
 
             // Double quote after backslash (backslash should make no difference).
-            Assert.AreEqual("\"a bc\\\\\"def\"", X3270if.Quote("a bc\\\"def"));
+            Assert.AreEqual("\"a bc\\\\\"def\"", X3270is.Quote("a bc\\\"def"));
 
             // Double quote at the end.
-            Assert.AreEqual("\"a bc\\\"def\\\\\"", X3270if.Quote("a bc\"def\\"));
+            Assert.AreEqual("\"a bc\\\"def\\\\\"", X3270is.Quote("a bc\"def\\"));
         }
     }
 }

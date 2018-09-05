@@ -2,7 +2,7 @@
 //     Copyright (c) Paul Mattes. All rights reserved.
 // </copyright>
 
-namespace X3270if
+namespace X3270is
 {
     using System;
     using System.Net;
@@ -13,7 +13,7 @@ namespace X3270if
     /// Simplified x3270 worker interface class (for scripts started via Script()), usable as a DLL or via COM.
     /// </summary>
     [ComVisible(true)]
-    public class WorkerConnection : X3270if, IDisposable
+    public class WorkerConnection : X3270is, IDisposable
     {
         /// <summary>
         /// The name of the environment variable giving the port.
@@ -34,14 +34,14 @@ namespace X3270if
             var portString = Environment.GetEnvironmentVariable(PortName);
             if (portString == null)
             {
-                throw new X3270ifException(string.Format("{0} not found in the environment", PortName));
+                throw new X3270isException(string.Format("{0} not found in the environment", PortName));
             }
 
             // Parse it.
             ushort port16;
             if (!ushort.TryParse(portString, out port16))
             {
-                throw new X3270ifException(string.Format("Invalid {0} '{1}'", PortName, portString));
+                throw new X3270isException(string.Format("Invalid {0} '{1}'", PortName, portString));
             }
 
             // Connect to it.

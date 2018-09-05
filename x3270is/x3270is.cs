@@ -1,8 +1,8 @@
-﻿// <copyright file="x3270if.cs" company="Paul Mattes">
+﻿// <copyright file="x3270is.cs" company="Paul Mattes">
 //     Copyright (c) Paul Mattes. All rights reserved.
 // </copyright>
 
-namespace X3270if
+namespace X3270is
 {
     using System;
     using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace X3270if
     /// Simplified x3270 interface class, usable as a DLL or via COM.
     /// </summary>
     /// <remarks>Abstract class, cannot be constructed directly.</remarks>
-    public abstract class X3270if : IDisposable
+    public abstract class X3270is : IDisposable
     {
         /// <summary>
         /// The prefix added to all output lines.
@@ -60,9 +60,9 @@ namespace X3270if
         private bool disposedValue;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="X3270if"/> class.
+        /// Initializes a new instance of the <see cref="X3270is"/> class.
         /// </summary>
-        public X3270if()
+        public X3270is()
         {
             this.debugString = new StringBuilder();
         }
@@ -144,8 +144,8 @@ namespace X3270if
         /// <returns>Result string, multiple lines separated by <see cref="Environment.NewLine"/></returns>
         /// <exception cref="ArgumentException">Control characters in text</exception>
         /// <exception cref="InvalidOperationException">Object in wrong state</exception>
-        /// <exception cref="X3270ifActionException">Action failed: emulator returned an error</exception>
-        /// <exception cref="X3270ifDisconnectException">Lost emulator connection</exception>
+        /// <exception cref="X3270isActionException">Action failed: emulator returned an error</exception>
+        /// <exception cref="X3270isDisconnectException">Lost emulator connection</exception>
         /// <remarks>
         /// The emulator prompt is saved in <see cref="StatusLine"/>.
         /// Debug output (exact strings sent and received) is saved in <see cref="DebugOutput"/>.
@@ -153,7 +153,7 @@ namespace X3270if
         /// <example>
         /// <code language="cs">
         /// // C#
-        /// using X3270if;
+        /// using X3270is;
         /// // ...
         /// // Set up the connection.
         /// var worker = new WorkerConnection();
@@ -170,9 +170,9 @@ namespace X3270if
         /// <code language="PowerShell">
         /// # PowerShell
         /// # Load the x3270 interface DLL.
-        /// Add-Type -Path "C:\Program Files\x3270ifSimple\x3270ifSimple.dll"
+        /// Add-Type -Path "C:\Program Files\x3270is\x3270is.dll"
         /// # Set up the connection.
-        /// $worker = New-Object -TypeName x3270if.WorkerConnection
+        /// $worker = New-Object -TypeName X3270is.WorkerConnection
         /// 
         /// # Query the cursor position.
         /// $cursor = $worker.RunRaw("Query(Cursor)")
@@ -186,7 +186,7 @@ namespace X3270if
         /// <code language="VBScript">
         /// ' VBScript
         /// ' Create the connection to the emulator.
-        /// set worker = CreateObject("x3270if.WorkerConnection")
+        /// set worker = CreateObject("X3270is.WorkerConnection")
         /// 
         /// ' Query the cursor position.
         /// cursor = worker.RunRaw("Query(Cursor)")
@@ -200,7 +200,7 @@ namespace X3270if
         /// <code language="JScript">
         /// // JScript
         /// // Create the connection to the emulator.
-        /// var worker = new ActiveXObject("x3270if.WorkerConnection");
+        /// var worker = new ActiveXObject("X3270is.WorkerConnection");
         /// 
         /// // Query the cursor position.
         /// var cursor = worker.RunJScriptArray("Query", new Array("Cursor"));
@@ -246,7 +246,7 @@ namespace X3270if
                     var nr = this.reader.Read(buf, 0, buf.Length);
                     if (nr == 0)
                     {
-                        throw new X3270ifDisconnectException("Emulator disconnected");
+                        throw new X3270isDisconnectException("Emulator disconnected");
                     }
 
                     reply.Append(buf, 0, nr);
@@ -264,7 +264,7 @@ namespace X3270if
             }
             catch (IOException e)
             {
-                throw new X3270ifDisconnectException(e.Message);
+                throw new X3270isDisconnectException(e.Message);
             }
 
             // Break into lines. The array looks like:
@@ -287,7 +287,7 @@ namespace X3270if
             // If the action failed, throw an exception.
             if (failed)
             {
-                throw new X3270ifActionException(result);
+                throw new X3270isActionException(result);
             }
 
             // Return the result.
@@ -302,8 +302,8 @@ namespace X3270if
         /// <returns>Result string, multiple lines separated by <see cref="Environment.NewLine"/></returns>
         /// <exception cref="ArgumentException">Control characters in text</exception>
         /// <exception cref="InvalidOperationException">Object in wrong state</exception>
-        /// <exception cref="X3270ifActionException">Action failed: emulator returned an error</exception>
-        /// <exception cref="X3270ifDisconnectException">Lost emulator connection</exception>
+        /// <exception cref="X3270isActionException">Action failed: emulator returned an error</exception>
+        /// <exception cref="X3270isDisconnectException">Lost emulator connection</exception>
         /// <remarks>
         /// The emulator prompt is saved in <see cref="StatusLine"/>.
         /// Debug output (exact strings sent and received) is saved in <see cref="DebugOutput"/>.
@@ -311,7 +311,7 @@ namespace X3270if
         /// <example>
         /// <code language="cs">
         /// // C#
-        /// using X3270if;
+        /// using X3270is;
         /// // ...
         /// // Set up the connection.
         /// var worker = new WorkerConnection();
@@ -328,9 +328,9 @@ namespace X3270if
         /// <code language="PowerShell">
         /// # PowerShell
         /// # Load the x3270 interface DLL.
-        /// Add-Type -Path "C:\Program Files\x3270ifSimple\x3270ifSimple.dll"
+        /// Add-Type -Path "C:\Program Files\x3270is\x3270is.dll"
         /// # Set up the connection.
-        /// $worker = New-Object -TypeName x3270if.WorkerConnection
+        /// $worker = New-Object -TypeName X3270is.WorkerConnection
         /// 
         /// # Query the cursor position.
         /// $cursor = $worker.Run("Query", "Cursor")
@@ -356,8 +356,8 @@ namespace X3270if
         /// <returns>Result string, multiple lines separated by <see cref="Environment.NewLine"/></returns>
         /// <exception cref="ArgumentException">Control characters in text</exception>
         /// <exception cref="InvalidOperationException">Object in wrong state</exception>
-        /// <exception cref="X3270ifActionException">Action failed: emulator returned an error</exception>
-        /// <exception cref="X3270ifDisconnectException">Lost emulator connection</exception>
+        /// <exception cref="X3270isActionException">Action failed: emulator returned an error</exception>
+        /// <exception cref="X3270isDisconnectException">Lost emulator connection</exception>
         /// <remarks>
         /// The emulator prompt is saved in <see cref="StatusLine"/>.
         /// Debug output (exact strings sent and received) is saved in <see cref="DebugOutput"/>.
@@ -366,7 +366,7 @@ namespace X3270if
         /// <code>
         /// // C#
         /// using System.Linq;
-        /// using X3270if;
+        /// using X3270is;
         /// // ...
         /// // Set up the connection.
         /// var worker = new WorkerConnection();
@@ -398,8 +398,8 @@ namespace X3270if
         /// <returns>Result string, multiple lines separated by <see cref="Environment.NewLine"/></returns>
         /// <exception cref="ArgumentException">Control characters in text</exception>
         /// <exception cref="InvalidOperationException">Object in wrong state</exception>
-        /// <exception cref="X3270ifActionException">Action failed: emulator returned an error</exception>
-        /// <exception cref="X3270ifDisconnectException">Lost emulator connection</exception>
+        /// <exception cref="X3270isActionException">Action failed: emulator returned an error</exception>
+        /// <exception cref="X3270isDisconnectException">Lost emulator connection</exception>
         /// <remarks>
         /// The emulator prompt is saved in <see cref="StatusLine"/>.
         /// Debug output (exact strings sent and received) is saved in <see cref="DebugOutput"/>.
@@ -408,9 +408,9 @@ namespace X3270if
         /// <code language="PowerShell">
         /// # PowerShell
         /// # Load the x3270 interface DLL.
-        /// Add-Type -Path "C:\Program Files\x3270ifSimple\x3270ifSimple.dll"
+        /// Add-Type -Path "C:\Program Files\x3270is\x3270is.dll"
         /// # Set up the connection.
-        /// $worker = New-Object -TypeName x3270if.WorkerConnection
+        /// $worker = New-Object -TypeName X3270is.WorkerConnection
         /// 
         /// # Query the cursor position.
         /// $cursor = $worker.Run("Query", "Cursor")
@@ -440,8 +440,8 @@ namespace X3270if
         /// <returns>Result string, multiple lines separated by <see cref="Environment.NewLine"/></returns>
         /// <exception cref="ArgumentException">Control characters in text</exception>
         /// <exception cref="InvalidOperationException">Object in wrong state</exception>
-        /// <exception cref="X3270ifActionException">Action failed: emulator returned an error</exception>
-        /// <exception cref="X3270ifDisconnectException">Lost emulator connection</exception>
+        /// <exception cref="X3270isActionException">Action failed: emulator returned an error</exception>
+        /// <exception cref="X3270isDisconnectException">Lost emulator connection</exception>
         /// <remarks>
         /// The emulator prompt is saved in <see cref="StatusLine"/>.
         /// Debug output (exact strings sent and received) is saved in <see cref="DebugOutput"/>.
@@ -450,7 +450,7 @@ namespace X3270if
         /// <code language="vbscript">
         /// ' VBScript
         /// ' Create the connection to the emulator.
-        /// set worker = CreateObject("x3270if.WorkerConnection")
+        /// set worker = CreateObject("X3270is.WorkerConnection")
         /// 
         /// ' Query the cursor position.
         /// cursor = worker.RunSafeArray("Query", Array("Cursor"))
@@ -477,8 +477,8 @@ namespace X3270if
         /// <returns>Result string, multiple lines separated by <see cref="Environment.NewLine"/></returns>
         /// <exception cref="ArgumentException">Control characters in text</exception>
         /// <exception cref="InvalidOperationException">Object in wrong state</exception>
-        /// <exception cref="X3270ifActionException">Action failed: emulator returned an error</exception>
-        /// <exception cref="X3270ifDisconnectException">Lost emulator connection</exception>
+        /// <exception cref="X3270isActionException">Action failed: emulator returned an error</exception>
+        /// <exception cref="X3270isDisconnectException">Lost emulator connection</exception>
         /// <remarks>
         /// The emulator prompt is saved in <see cref="StatusLine"/>.
         /// Debug output (exact strings sent and received) is saved in <see cref="DebugOutput"/>.
@@ -487,7 +487,7 @@ namespace X3270if
         /// <code language="jscript">
         /// // JScript
         /// // Create the connection to the emulator.
-        /// var worker = new ActiveXObject("x3270if.WorkerConnection");
+        /// var worker = new ActiveXObject("X3270is.WorkerConnection");
         /// 
         /// // Query the cursor position.
         /// var cursor = worker.RunJScriptArray("Query", new Array("Cursor"));

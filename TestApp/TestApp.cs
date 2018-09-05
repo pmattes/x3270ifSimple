@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using X3270if;
+using X3270is;
 
 namespace PeerTestApp
 {

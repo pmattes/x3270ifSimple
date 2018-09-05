@@ -2,7 +2,7 @@
 //     Copyright (c) Paul Mattes. All rights reserved.
 // </copyright>
 
-namespace X3270if
+namespace X3270is
 {
     using System;
     using System.Collections.Generic;

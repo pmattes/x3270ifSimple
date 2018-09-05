@@ -2,20 +2,23 @@
 //     Copyright (c) Paul Mattes. All rights reserved.
 // </copyright>
 
-namespace X3270if
+namespace X3270is
 {
     using System;
     using System.ComponentModel;
     using System.Diagnostics;
+    using System.Linq;
     using System.Net;
     using System.Net.Sockets;
     using System.Runtime.InteropServices;
+
+    using Microsoft.Win32;
 
     /// <summary>
     /// Simplified x3270 new emulator class (starts a new copy of ws3270).
     /// </summary>
     [ComVisible(true)]
-    public class NewEmulator : X3270if, IDisposable
+    public class NewEmulator : X3270is, IDisposable
     {
         /// <summary>
         /// The minimum emulator version required.
@@ -26,6 +29,21 @@ namespace X3270if
         /// The name of s3270.
         /// </summary>
         private const string S3270 = "ws3270.exe";
+
+        /// <summary>
+        /// Registry key where the installer saves the installation directory.
+        /// </summary>
+        private const string InstallKey = @"Software\x3270\x3270is";
+
+        /// <summary>
+        /// Registry value for the installation directory.
+        /// </summary>
+        private const string InstallDirValue = "InstallDir";
+
+        /// <summary>
+        /// The name of the PATH environment variable.
+        /// </summary>
+        private const string Path = "PATH";
 
         /// <summary>
         /// Started emulator process.
@@ -62,6 +80,29 @@ namespace X3270if
                 socket.SetSocketOption(SocketOptionLevel.IP, SocketOptionName.ReuseAddress, true);
                 socket.Bind(new IPEndPoint(IPAddress.Any, 0));
                 int port = ((IPEndPoint)socket.LocalEndPoint).Port;
+
+                // Set up %PATH% to find ws3270.
+                // This is redundant for direct use of the DLL (since the DLL and ws3270 are installed in the
+                // same directory), but for COM, it is needed.
+                var key = Registry.LocalMachine.OpenSubKey(InstallKey, writable: false);
+                if (key != null)
+                {
+                    var installDir = (string)key.GetValue(InstallDirValue);
+                    if (installDir != null)
+                    {
+                        var path = Environment.GetEnvironmentVariable(Path);
+                        if (path == null)
+                        {
+                            Environment.SetEnvironmentVariable(Path, installDir);
+                        }
+                        else if (!path.Split(';').Contains(installDir, StringComparer.InvariantCultureIgnoreCase))
+                        {
+                            Environment.SetEnvironmentVariable(Path, installDir + ";" + path);
+                        }
+                    }
+
+                    key.Close();
+                }
 
                 // Start with basic arguments:
                 //  -minversion       make sure we have a new-enough version
@@ -101,7 +142,7 @@ namespace X3270if
                 }
                 catch (Win32Exception e)
                 {
-                    throw new X3270ifException(S3270 + ": " + e.Message);
+                    throw new X3270isException(S3270 + ": " + e.Message);
                 }
 
                 // Connect to it.
@@ -116,7 +157,7 @@ namespace X3270if
                     if (!string.IsNullOrEmpty(s3270Error))
                     {
                         // ws3270 had something to say on the way down.
-                        throw new X3270ifException("ws3270 failure: " + s3270Error.TrimEnd(Environment.NewLine.ToCharArray()));
+                        throw new X3270isException("ws3270 failure: " + s3270Error.TrimEnd(Environment.NewLine.ToCharArray()));
                     }
 
                     throw;
