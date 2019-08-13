@@ -35,6 +35,11 @@ namespace X3270is
         private const int DefaultPort = 23;
 
         /// <summary>
+        /// The list of logical units.
+        /// </summary>
+        private readonly List<string> logicalUnits = new List<string>();
+
+        /// <summary>
         /// Host name.
         /// </summary>
         private string hostName;
@@ -43,11 +48,6 @@ namespace X3270is
         /// Backing field for <see cref="Port"/>.
         /// </summary>
         private int port = DefaultPort;
-
-        /// <summary>
-        /// The list of logical units.
-        /// </summary>
-        private List<string> logicalUnits = new List<string>();
 
         /// <summary>
         /// TLS host certificate validation flag.

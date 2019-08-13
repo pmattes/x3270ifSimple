@@ -35,6 +35,11 @@ namespace X3270is
         private const string ErrorPrompt = "\nerror\n";
 
         /// <summary>
+        /// The debug string.
+        /// </summary>
+        private readonly StringBuilder debugString;
+
+        /// <summary>
         /// The encoding that the emulator is using.
         /// </summary>
         private Encoding encoding = new UTF8Encoding(false);
@@ -48,11 +53,6 @@ namespace X3270is
         /// The write stream.
         /// </summary>
         private StreamWriter writer;
-
-        /// <summary>
-        /// The debug string.
-        /// </summary>
-        private StringBuilder debugString;
 
         /// <summary>
         /// To detect redundant Dispose calls.
@@ -83,13 +83,7 @@ namespace X3270is
         /// Gets debug output for the last action.
         /// </summary>
         [ComVisible(true)]
-        public string DebugOutput
-        {
-            get
-            {
-                return this.debugString.ToString();
-            }
-        }
+        public string DebugOutput => this.debugString.ToString();
 
         /// <summary>
         /// Gets or sets the TCP session to the emulator.

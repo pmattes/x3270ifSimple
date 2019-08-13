@@ -38,8 +38,7 @@ namespace X3270is
             }
 
             // Parse it.
-            ushort port16;
-            if (!ushort.TryParse(portString, out port16))
+            if (!ushort.TryParse(portString, out ushort port16))
             {
                 throw new X3270isException(string.Format("Invalid {0} '{1}'", PortName, portString));
             }
@@ -74,7 +73,7 @@ namespace X3270is
             {
                 if (disposing)
                 {
-                    // Dispoe managed resources here.
+                    // Dispose managed resources here.
                 }
 
                 this.disposedValue = true;
