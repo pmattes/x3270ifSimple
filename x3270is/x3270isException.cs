@@ -14,8 +14,9 @@ namespace X3270is
         /// <summary>
         /// Initializes a new instance of the <see cref="X3270isException"/> class.
         /// </summary>
-        /// <param name="text">Description of exception</param>
-        public X3270isException(string text) : base(text)
+        /// <param name="text">Description of exception.</param>
+        public X3270isException(string text)
+            : base(text)
         {
         }
     }

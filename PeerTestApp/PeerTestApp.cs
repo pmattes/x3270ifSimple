@@ -1,12 +1,23 @@
-﻿using System;
-using System.IO;
-using X3270is;
+﻿// <copyright file="PeerTestApp.cs" company="Paul Mattes">
+//     Copyright (c) Paul Mattes. All rights reserved.
+// </copyright>
 
 namespace PeerTestApp
 {
-    class PeerTestApp
+    using System;
+    using System.IO;
+    using X3270is;
+
+    /// <summary>
+    /// Test application for a screen scraping app (not interactive).
+    /// </summary>
+    public class PeerTestApp
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Main procedure.
+        /// </summary>
+        /// <param name="args">Command-line arguments.</param>
+        public static void Main(string[] args)
         {
             var f = new StreamWriter("foo.txt");
             f.AutoFlush = true;

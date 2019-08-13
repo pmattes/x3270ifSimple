@@ -44,7 +44,7 @@ namespace UnitTests
                 TlsTunnel = true,
                 ValidateHostCertificate = false,
                 LogicalUnits = new[] { Lu1, Lu2 },
-                AcceptName = AcceptName
+                AcceptName = AcceptName,
             };
 
             Assert.AreEqual(
@@ -81,7 +81,7 @@ namespace UnitTests
         {
             var h = new HostSpecification("x")
             {
-                Port = -3
+                Port = -3,
             };
         }
 
@@ -94,7 +94,7 @@ namespace UnitTests
         {
             var h = new HostSpecification("x")
             {
-                Port = 0xfffff
+                Port = 0xfffff,
             };
         }
 
@@ -129,7 +129,7 @@ namespace UnitTests
         {
             var h = new HostSpecification("x")
             {
-                AcceptName = "=fred"
+                AcceptName = "=fred",
             };
         }
 
@@ -142,7 +142,7 @@ namespace UnitTests
         {
             var h = new HostSpecification("x")
             {
-                AcceptName = null
+                AcceptName = null,
             };
         }
     }

@@ -93,8 +93,8 @@ namespace X3270is
         /// <summary>
         /// Quote a parameter appropriately for the emulator.
         /// </summary>
-        /// <param name="param">Parameter to quote</param>
-        /// <returns>Quoted parameter</returns>
+        /// <param name="param">Parameter to quote.</param>
+        /// <returns>Quoted parameter.</returns>
         /// <remarks>
         /// From the original Xt Intrinsics manual:
         /// A quoted string may contain an embedded quotation mark if the quotation mark is preceded by a single backslash (\).
@@ -135,11 +135,11 @@ namespace X3270is
         /// </summary>
         /// <param name="text">The action name and arguments to pass to the emulator.
         /// Must be formatted correctly. This method does no translation.</param>
-        /// <returns>Result string, multiple lines separated by <see cref="Environment.NewLine"/></returns>
-        /// <exception cref="ArgumentException">Control characters in text</exception>
-        /// <exception cref="InvalidOperationException">Object in wrong state</exception>
-        /// <exception cref="X3270isActionException">Action failed: emulator returned an error</exception>
-        /// <exception cref="X3270isDisconnectException">Lost emulator connection</exception>
+        /// <returns>Result string, multiple lines separated by <see cref="Environment.NewLine"/>.</returns>
+        /// <exception cref="ArgumentException">Control characters in text.</exception>
+        /// <exception cref="InvalidOperationException">Object in wrong state.</exception>
+        /// <exception cref="X3270isActionException">Action failed: emulator returned an error.</exception>
+        /// <exception cref="X3270isDisconnectException">Lost emulator connection.</exception>
         /// <remarks>
         /// The emulator prompt is saved in <see cref="StatusLine"/>.
         /// Debug output (exact strings sent and received) is saved in <see cref="DebugOutput"/>.
@@ -151,13 +151,13 @@ namespace X3270is
         /// // ...
         /// // Set up the connection.
         /// var worker = new WorkerConnection();
-        /// 
+        ///
         /// // Query the cursor position.
         /// var cursor = worker.RunRaw("Query(Cursor)"));
         /// var cursorSplit = cursor.Split(' ');
         /// var row = int.Parse(cursorSplit[0]);
         /// var column = int.Parse(cursorSplit[1]);
-        /// 
+        ///
         /// // Move the cursor over one column, and down one row.
         /// worker.RunRaw(string.Format("MoveCursor({0},{1})", row + 1, column + 1);
         /// </code>
@@ -167,13 +167,13 @@ namespace X3270is
         /// Add-Type -Path "C:\Program Files\x3270is\x3270is.dll"
         /// # Set up the connection.
         /// $worker = New-Object -TypeName X3270is.WorkerConnection
-        /// 
+        ///
         /// # Query the cursor position.
         /// $cursor = $worker.RunRaw("Query(Cursor)")
         /// $cursorSplit = $cursor.Split(" ")
         /// $row = $cursorSplit[0] -as [int]
         /// $column = $cursorSplit[1] -as [int]
-        /// 
+        ///
         /// # Move the cursor over one column, and down one row.
         /// $worker.RunRaw([string]::Format("MoveCursor({0},{1})", $row + 1, $column + 1))
         /// </code>
@@ -181,13 +181,13 @@ namespace X3270is
         /// ' VBScript
         /// ' Create the connection to the emulator.
         /// set worker = CreateObject("X3270is.WorkerConnection")
-        /// 
+        ///
         /// ' Query the cursor position.
         /// cursor = worker.RunRaw("Query(Cursor)")
         /// cursorSplit = Split(cursor, " ")
         /// row = CInt(cursorSplit(0))
         /// column = CInt(cursorSplit(1))
-        /// 
+        ///
         /// ' Move the cursor over one column, and down one row.
         /// r = worker.RunRaw("MoveCursor(" &amp; CStr(row + 1) &amp; "," &amp; CStr(column + 1) &amp; ")")
         /// </code>
@@ -195,13 +195,13 @@ namespace X3270is
         /// // JScript
         /// // Create the connection to the emulator.
         /// var worker = new ActiveXObject("X3270is.WorkerConnection");
-        /// 
+        ///
         /// // Query the cursor position.
         /// var cursor = worker.RunJScriptArray("Query", new Array("Cursor"));
         /// var cursorSplit = cursor.split(" ");
         /// var row = parseInt(cursorSplit[0]);
         /// var column = parseInt(cursorSplit[1]);
-        /// 
+        ///
         /// // Move the cursor over one column, and down one row.
         /// worker.RunRaw("MoveCursor(" + (row + 1) + "," + (column + 1) + ")");
         /// </code>
@@ -291,13 +291,13 @@ namespace X3270is
         /// <summary>
         /// Run an action, transparently formatting the arguments.
         /// </summary>
-        /// <param name="action">Action name</param>
-        /// <param name="args">Action arguments</param>
-        /// <returns>Result string, multiple lines separated by <see cref="Environment.NewLine"/></returns>
-        /// <exception cref="ArgumentException">Control characters in text</exception>
-        /// <exception cref="InvalidOperationException">Object in wrong state</exception>
-        /// <exception cref="X3270isActionException">Action failed: emulator returned an error</exception>
-        /// <exception cref="X3270isDisconnectException">Lost emulator connection</exception>
+        /// <param name="action">Action name.</param>
+        /// <param name="args">Action arguments.</param>
+        /// <returns>Result string, multiple lines separated by <see cref="Environment.NewLine"/>.</returns>
+        /// <exception cref="ArgumentException">Control characters in text.</exception>
+        /// <exception cref="InvalidOperationException">Object in wrong state.</exception>
+        /// <exception cref="X3270isActionException">Action failed: emulator returned an error.</exception>
+        /// <exception cref="X3270isDisconnectException">Lost emulator connection.</exception>
         /// <remarks>
         /// The emulator prompt is saved in <see cref="StatusLine"/>.
         /// Debug output (exact strings sent and received) is saved in <see cref="DebugOutput"/>.
@@ -309,13 +309,13 @@ namespace X3270is
         /// // ...
         /// // Set up the connection.
         /// var worker = new WorkerConnection();
-        /// 
+        ///
         /// // Query the cursor position.
         /// var cursor = worker.Run("Query", "Cursor");
         /// var cursorSplit = cursor.Split(' ');
         /// var row = int.Parse(cursorSplit[0]);
         /// var column = int.Parse(cursorSplit[1]);
-        /// 
+        ///
         /// // Move the cursor over one column, and down one row.
         /// worker.Run("MoveCursor", (row + 1).ToString(), (column + 1).ToString())
         /// </code>
@@ -325,13 +325,13 @@ namespace X3270is
         /// Add-Type -Path "C:\Program Files\x3270is\x3270is.dll"
         /// # Set up the connection.
         /// $worker = New-Object -TypeName X3270is.WorkerConnection
-        /// 
+        ///
         /// # Query the cursor position.
         /// $cursor = $worker.Run("Query", "Cursor")
         /// $cursorSplit = $cursor.Split(" ")
         /// $row = $cursorSplit[0] -as [int]
         /// $column = $cursorSplit[1] -as [int]
-        /// 
+        ///
         /// # Move the cursor over one column, and down one row.
         /// $worker.Run("MoveCursor", ($row + 1).ToString(), ($column + 1).ToString())
         /// </code>
@@ -345,13 +345,13 @@ namespace X3270is
         /// <summary>
         /// Run an action, transparently formatting the arguments.
         /// </summary>
-        /// <param name="action">Action name</param>
-        /// <param name="args">Action arguments</param>
-        /// <returns>Result string, multiple lines separated by <see cref="Environment.NewLine"/></returns>
-        /// <exception cref="ArgumentException">Control characters in text</exception>
-        /// <exception cref="InvalidOperationException">Object in wrong state</exception>
-        /// <exception cref="X3270isActionException">Action failed: emulator returned an error</exception>
-        /// <exception cref="X3270isDisconnectException">Lost emulator connection</exception>
+        /// <param name="action">Action name.</param>
+        /// <param name="args">Action arguments.</param>
+        /// <returns>Result string, multiple lines separated by <see cref="Environment.NewLine"/>.</returns>
+        /// <exception cref="ArgumentException">Control characters in text.</exception>
+        /// <exception cref="InvalidOperationException">Object in wrong state.</exception>
+        /// <exception cref="X3270isActionException">Action failed: emulator returned an error.</exception>
+        /// <exception cref="X3270isDisconnectException">Lost emulator connection.</exception>
         /// <remarks>
         /// The emulator prompt is saved in <see cref="StatusLine"/>.
         /// Debug output (exact strings sent and received) is saved in <see cref="DebugOutput"/>.
@@ -366,14 +366,14 @@ namespace X3270is
         /// var worker = new WorkerConnection();
         /// // Query the cursor position.
         /// var cursor = worker.Run("Query", "Cursor");
-        /// 
+        ///
         /// // Move the cursor over one column, and down one row.
         /// var cursorSplit = cursor.Split(' ');
         /// var arr = new string[2];
         /// arr[0] = (int.Parse(cursorSplit[0]) + 1).ToString();
         /// arr[1] = (int.Parse(cursorSplit[1]) + 1).ToString();
         /// worker.Run("MoveCursor", arr);
-        /// 
+        ///
         /// // Move the cursor over one column, and down one row (too cleverly).
         /// worker.Run("MoveCursor", cursor.Split(' ').Select(c => (int.Parse(c) + 1).ToString()))
         /// </code>
@@ -387,13 +387,13 @@ namespace X3270is
         /// <summary>
         /// Run an action, transparently formatting the arguments. For PowerShell, which uses untyped arrays by default.
         /// </summary>
-        /// <param name="action">Action name</param>
-        /// <param name="args">Action arguments</param>
-        /// <returns>Result string, multiple lines separated by <see cref="Environment.NewLine"/></returns>
-        /// <exception cref="ArgumentException">Control characters in text</exception>
-        /// <exception cref="InvalidOperationException">Object in wrong state</exception>
-        /// <exception cref="X3270isActionException">Action failed: emulator returned an error</exception>
-        /// <exception cref="X3270isDisconnectException">Lost emulator connection</exception>
+        /// <param name="action">Action name.</param>
+        /// <param name="args">Action arguments.</param>
+        /// <returns>Result string, multiple lines separated by <see cref="Environment.NewLine"/>.</returns>
+        /// <exception cref="ArgumentException">Control characters in text.</exception>
+        /// <exception cref="InvalidOperationException">Object in wrong state.</exception>
+        /// <exception cref="X3270isActionException">Action failed: emulator returned an error.</exception>
+        /// <exception cref="X3270isDisconnectException">Lost emulator connection.</exception>
         /// <remarks>
         /// The emulator prompt is saved in <see cref="StatusLine"/>.
         /// Debug output (exact strings sent and received) is saved in <see cref="DebugOutput"/>.
@@ -405,13 +405,13 @@ namespace X3270is
         /// Add-Type -Path "C:\Program Files\x3270is\x3270is.dll"
         /// # Set up the connection.
         /// $worker = New-Object -TypeName X3270is.WorkerConnection
-        /// 
+        ///
         /// # Query the cursor position.
         /// $cursor = $worker.Run("Query", "Cursor")
         /// $cursorSplit = $cursor.Split(" ")
         /// $row = $cursorSplit[0] -as [int]
         /// $column = $cursorSplit[1] -as [int]
-        /// 
+        ///
         /// # Move the cursor over one column, and down one row.
         /// $a = @()
         /// $a += $row + 1
@@ -429,13 +429,13 @@ namespace X3270is
         /// Run an action, transparently formatting the arguments. For VBScript, which uses untyped (variant) arrays, and doesn't understand method overloading
         /// or variable/optional arguments, so it cannot use any of the forms of Run.
         /// </summary>
-        /// <param name="action">Action name</param>
-        /// <param name="args">Action arguments</param>
-        /// <returns>Result string, multiple lines separated by <see cref="Environment.NewLine"/></returns>
-        /// <exception cref="ArgumentException">Control characters in text</exception>
-        /// <exception cref="InvalidOperationException">Object in wrong state</exception>
-        /// <exception cref="X3270isActionException">Action failed: emulator returned an error</exception>
-        /// <exception cref="X3270isDisconnectException">Lost emulator connection</exception>
+        /// <param name="action">Action name.</param>
+        /// <param name="args">Action arguments.</param>
+        /// <returns>Result string, multiple lines separated by <see cref="Environment.NewLine"/>.</returns>
+        /// <exception cref="ArgumentException">Control characters in text.</exception>
+        /// <exception cref="InvalidOperationException">Object in wrong state.</exception>
+        /// <exception cref="X3270isActionException">Action failed: emulator returned an error.</exception>
+        /// <exception cref="X3270isDisconnectException">Lost emulator connection.</exception>
         /// <remarks>
         /// The emulator prompt is saved in <see cref="StatusLine"/>.
         /// Debug output (exact strings sent and received) is saved in <see cref="DebugOutput"/>.
@@ -445,13 +445,13 @@ namespace X3270is
         /// ' VBScript
         /// ' Create the connection to the emulator.
         /// set worker = CreateObject("X3270is.WorkerConnection")
-        /// 
+        ///
         /// ' Query the cursor position.
         /// cursor = worker.RunSafeArray("Query", Array("Cursor"))
         /// cursorSplit = Split(cursor, " ")
         /// row = int(cursorSplit(0))
         /// column = int(cursorSplit(1))
-        /// 
+        ///
         /// ' Move the cursor over one column and down one row.
         /// r = worker.RunSafeArray("MoveCursor", Array(row + 1, column + 1))
         /// </code>
@@ -466,13 +466,13 @@ namespace X3270is
         /// Run an action, transparently formatting the arguments. For JScript, which uses its own form of arrays and doesn't understand method overloading or
         /// variable/optional arguments.
         /// </summary>
-        /// <param name="action">Action name</param>
-        /// <param name="args">JScript array of arguments</param>
-        /// <returns>Result string, multiple lines separated by <see cref="Environment.NewLine"/></returns>
-        /// <exception cref="ArgumentException">Control characters in text</exception>
-        /// <exception cref="InvalidOperationException">Object in wrong state</exception>
-        /// <exception cref="X3270isActionException">Action failed: emulator returned an error</exception>
-        /// <exception cref="X3270isDisconnectException">Lost emulator connection</exception>
+        /// <param name="action">Action name.</param>
+        /// <param name="args">JScript array of arguments.</param>
+        /// <returns>Result string, multiple lines separated by <see cref="Environment.NewLine"/>.</returns>
+        /// <exception cref="ArgumentException">Control characters in text.</exception>
+        /// <exception cref="InvalidOperationException">Object in wrong state.</exception>
+        /// <exception cref="X3270isActionException">Action failed: emulator returned an error.</exception>
+        /// <exception cref="X3270isDisconnectException">Lost emulator connection.</exception>
         /// <remarks>
         /// The emulator prompt is saved in <see cref="StatusLine"/>.
         /// Debug output (exact strings sent and received) is saved in <see cref="DebugOutput"/>.
@@ -482,13 +482,13 @@ namespace X3270is
         /// // JScript
         /// // Create the connection to the emulator.
         /// var worker = new ActiveXObject("X3270is.WorkerConnection");
-        /// 
+        ///
         /// // Query the cursor position.
         /// var cursor = worker.RunJScriptArray("Query", new Array("Cursor"));
         /// var cursorSplit = cursor.split(" ");
         /// var row = parseInt(cursorSplit[0]);
         /// var column = parseInt(cursorSplit[1]);
-        /// 
+        ///
         /// // Then move the cursor back over one column and down one row.
         /// worker.RunJScriptArray("MoveCursor", new Array(row + 1, column + 1));
         /// </code>
@@ -550,7 +550,7 @@ namespace X3270is
         /// <summary>
         /// Dispose the object.
         /// </summary>
-        /// <param name="disposing">True if disposing</param>
+        /// <param name="disposing">True if disposing.</param>
         [ComVisible(true)]
         protected virtual void Dispose(bool disposing)
         {
@@ -585,8 +585,8 @@ namespace X3270is
         /// <summary>
         /// Log debugging information.
         /// </summary>
-        /// <param name="format">String format</param>
-        /// <param name="args">Message parameters</param>
+        /// <param name="format">String format.</param>
+        /// <param name="args">Message parameters.</param>
         protected void Log(string format, params object[] args)
         {
             var text = string.Format(format, args);
@@ -609,9 +609,9 @@ namespace X3270is
         /// <summary>
         /// Get a dynamic array object.
         /// </summary>
-        /// <param name="array">Array to fetch from</param>
-        /// <param name="index">Object \iIndex</param>
-        /// <returns>Indexed element</returns>
+        /// <param name="array">Array to fetch from.</param>
+        /// <param name="index">Object \iIndex.</param>
+        /// <returns>Indexed element.</returns>
         private static object GetAt(object array, int index)
         {
             return array.GetType().InvokeMember(

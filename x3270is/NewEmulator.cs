@@ -58,7 +58,8 @@ namespace X3270is
         /// <summary>
         /// Initializes a new instance of the <see cref="NewEmulator"/> class.
         /// </summary>
-        public NewEmulator() : base()
+        public NewEmulator()
+            : base()
         {
         }
 
@@ -133,7 +134,7 @@ namespace X3270is
                     CreateNoWindow = true,
                     RedirectStandardError = true,
                     RedirectStandardOutput = true,
-                    Arguments = arguments
+                    Arguments = arguments,
                 };
                 this.Log("NewEmulator Start: ProcessName '{0}', arguments '{1}'", S3270, info.Arguments);
                 try
@@ -182,7 +183,7 @@ namespace X3270is
         /// <summary>
         /// Dispose the object.
         /// </summary>
-        /// <param name="disposing">True if disposing</param>
+        /// <param name="disposing">True if disposing.</param>
         protected virtual new void Dispose(bool disposing)
         {
             if (!this.disposedValue)

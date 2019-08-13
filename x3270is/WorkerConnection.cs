@@ -28,7 +28,8 @@ namespace X3270is
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkerConnection"/> class.
         /// </summary>
-        public WorkerConnection() : base()
+        public WorkerConnection()
+            : base()
         {
             // Get the port from the environment.
             var portString = Environment.GetEnvironmentVariable(PortName);
@@ -46,7 +47,7 @@ namespace X3270is
             // Connect to it.
             this.Client = new TcpClient();
             this.Client.Connect(new IPEndPoint(IPAddress.Loopback, port16));
-            
+
             // Set up the reader and writer, and set the encoding if needed.
             this.SetupReaderWriter();
             this.SetupEncoding();
@@ -66,7 +67,7 @@ namespace X3270is
         /// <summary>
         /// Dispose the object.
         /// </summary>
-        /// <param name="disposing">True if disposing</param>
+        /// <param name="disposing">True if disposing.</param>
         protected virtual new void Dispose(bool disposing)
         {
             if (!this.disposedValue)
