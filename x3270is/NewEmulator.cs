@@ -51,6 +51,11 @@ namespace X3270is
         private Process process = null;
 
         /// <summary>
+        /// Explicit path to s3270.
+        /// </summary>
+        private string s3270Path;
+
+        /// <summary>
         /// To detect redundant Dispose calls.
         /// </summary>
         private bool disposedValue;
@@ -68,6 +73,23 @@ namespace X3270is
         /// </summary>
         [ComVisible(true)]
         public string ExtraOptions { get; set; }
+
+        /// <summary>
+        /// Gets or sets the path to s3270.
+        /// </summary>
+        [ComVisible(true)]
+        public string S3270Path
+        {
+            get
+            {
+                return this.s3270Path ?? S3270;
+            }
+
+            set
+            {
+                this.s3270Path = value;
+            }
+        }
 
         /// <summary>
         /// Start the s3270 process.
@@ -128,7 +150,7 @@ namespace X3270is
                 }
 
                 // Start the process.
-                var info = new ProcessStartInfo(S3270)
+                var info = new ProcessStartInfo(this.S3270Path)
                 {
                     UseShellExecute = false,
                     CreateNoWindow = true,
@@ -136,7 +158,7 @@ namespace X3270is
                     RedirectStandardOutput = true,
                     Arguments = arguments,
                 };
-                this.Log("NewEmulator Start: ProcessName '{0}', arguments '{1}'", S3270, info.Arguments);
+                this.Log("NewEmulator Start: ProcessName '{0}', arguments '{1}'", this.S3270Path, info.Arguments);
                 try
                 {
                     this.process = Process.Start(info);
