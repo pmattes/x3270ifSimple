@@ -108,12 +108,14 @@
     <None Include="toc.yml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Import\x64\ws3270.exe">
+    <ContentWithTargetPath Include="Import\x64\ws3270.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Import\x86\ws3270.exe">
+      <TargetPath>ws3270.exe</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="Import\x86\ws3270.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+      <TargetPath>ws3270.exe</TargetPath>
+    </ContentWithTargetPath>
     <Content Include="package.py" />
     <Content Include="x3270is.bmp" />
     <Content Include="x3270is.iss" />
