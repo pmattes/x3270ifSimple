@@ -86,14 +86,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ContentWithTargetPath Include="Import\x64\ws3270.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <TargetPath>ws3270.exe</TargetPath>
-    </ContentWithTargetPath>
-    <ContentWithTargetPath Include="Import\x86\ws3270.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <TargetPath>ws3270.exe</TargetPath>
-    </ContentWithTargetPath>
+    <Content Include="Import\x64\s3270.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Import\x86\s3270.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

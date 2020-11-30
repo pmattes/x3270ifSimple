@@ -26,7 +26,7 @@ subprocess.run(["msbuild", "/t:Rebuild", "/p:Configuration=Release;Platform=x64"
 
 # Sign it.
 print("***** Signing DLLs and EXEs *****")
-subprocess.run(["signtool.exe", "sign", "/a", signtool_verbose, "/f", cert, "/p", password, "/t", "http://timestamp.comodoca.com/authenticode", "bin\\x86\\Release\\x3270is.dll", "bin\\x64\\Release\\x3270is.dll", "bin\\x86\\Release\\Import\\x86\\ws3270.exe", "bin\\x64\\Release\\Import\\x64\\ws3270.exe"], check=True)
+subprocess.run(["signtool.exe", "sign", "/a", signtool_verbose, "/f", cert, "/p", password, "/t", "http://timestamp.comodoca.com/authenticode", "bin\\x86\\Release\\x3270is.dll", "bin\\x64\\Release\\x3270is.dll", "bin\\x86\\Release\\Import\\x86\\s3270.exe", "bin\\x64\\Release\\Import\\x64\\s3270.exe"], check=True)
 
 # Package it.
 print("***** Building installer *****")

@@ -15,7 +15,7 @@ namespace X3270is
     using Microsoft.Win32;
 
     /// <summary>
-    /// Simplified x3270 new emulator class (starts a new copy of ws3270).
+    /// Simplified x3270 new emulator class (starts a new copy of s3270).
     /// </summary>
     [ComVisible(true)]
     public class NewEmulator : X3270is, IDisposable
@@ -28,7 +28,7 @@ namespace X3270is
         /// <summary>
         /// The name of s3270.
         /// </summary>
-        private const string S3270 = "ws3270.exe";
+        private const string S3270 = "s3270.exe";
 
         /// <summary>
         /// Registry key where the installer saves the installation directory.
@@ -104,8 +104,8 @@ namespace X3270is
                 socket.Bind(new IPEndPoint(IPAddress.Any, 0));
                 int port = ((IPEndPoint)socket.LocalEndPoint).Port;
 
-                // Set up %PATH% to find ws3270.
-                // This is redundant for direct use of the DLL (since the DLL and ws3270 are installed in the
+                // Set up %PATH% to find s3270.
+                // This is redundant for direct use of the DLL (since the DLL and s3270 are installed in the
                 // same directory), but for COM, it is needed.
                 var key = Registry.LocalMachine.OpenSubKey(InstallKey, writable: false);
                 if (key != null)
@@ -179,8 +179,8 @@ namespace X3270is
                     var s3270Error = this.process.StandardError.ReadToEnd();
                     if (!string.IsNullOrEmpty(s3270Error))
                     {
-                        // ws3270 had something to say on the way down.
-                        throw new X3270isException("ws3270 failure: " + s3270Error.TrimEnd(Environment.NewLine.ToCharArray()));
+                        // s3270 had something to say on the way down.
+                        throw new X3270isException("s3270 failure: " + s3270Error.TrimEnd(Environment.NewLine.ToCharArray()));
                     }
 
                     throw;

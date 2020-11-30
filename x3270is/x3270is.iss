@@ -28,9 +28,9 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
 Source: "bin\x64\Release\x3270is.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
-Source: "bin\x64\Release\Import\x64\ws3270.exe"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
+Source: "bin\x64\Release\Import\x64\s3270.exe"; DestDir: "{app}"; Flags: ignoreversion; Check: Is64BitInstallMode
 Source: "bin\x86\Release\x3270is.dll"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
-Source: "bin\x86\Release\Import\x86\ws3270.exe"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
+Source: "bin\x86\Release\Import\x86\s3270.exe"; DestDir: "{app}"; Flags: ignoreversion; Check: not Is64BitInstallMode
 
 [Tasks]
 Name: "com"; Description: "Register COM object"
