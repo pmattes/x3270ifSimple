@@ -3,7 +3,7 @@
 
 [Setup]
 AllowNoIcons=yes
-AppCopyright=Copyright (C) 2017-2018 by Paul Mattes
+AppCopyright=Copyright (C) 2017-2020 by Paul Mattes
 AppName=x3270is
 AppPublisher=Paul Mattes
 AppPublisherURL=http://x3270.bgp.nu

@@ -30,7 +30,7 @@ subprocess.run(["signtool.exe", "sign", "/a", signtool_verbose, "/f", cert, "/p"
 
 # Package it.
 print("***** Building installer *****")
-inno_cmd = ["C:\\Program Files (x86)\\Inno Setup 5\\iscc.exe"];
+inno_cmd = ["C:\\Program Files (x86)\\Inno Setup 6\\iscc.exe"];
 if inno_verbose != "": inno_cmd += [ inno_verbose ]
 inno_cmd += ["/ssigntool=signtool.exe sign " + signtool_verbose + " /a /f $q" + cert + "$q /t http://timestamp.comodoca.com/authenticode /p " + password + " $f", "x3270is.iss"]
 subprocess.run(inno_cmd, check=True)
