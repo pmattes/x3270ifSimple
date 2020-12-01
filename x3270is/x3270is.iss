@@ -13,10 +13,10 @@ AppVerName=x3270is 1.0
 ArchitecturesInstallIn64BitMode=x64
 ChangesAssociations=yes
 Compression=lzma
-DefaultDirName={pf}\x3270is
+DefaultDirName={commonpf}\x3270is
 DefaultGroupName=x3270is
 DisableDirPage=no
-MinVersion=0,6.0
+; MinVersion=0,6.1
 OutputBaseFilename=x3270is-setup
 OutputDir=.
 SolidCompression=yes
@@ -42,7 +42,7 @@ Root: HKLM; Subkey: "Software\x3270\x3270is"; ValueType: string; ValueName: "Ins
 Filename: "{dotnet40}\RegAsm.exe"; Parameters: /codebase {app}\x3270is.dll; WorkingDir: {app}; StatusMsg: "Registering Controls..."; Flags: runminimized; Tasks: com
 
 [UninstallRun]
-Filename: "{dotnet40}\RegAsm.exe"; Parameters: /unregister {app}\x3270is.dll; WorkingDir: {app}; StatusMsg: "Unregistering Controls..."; Flags: runminimized; Tasks: com
+Filename: "{dotnet40}\RegAsm.exe"; Parameters: /unregister {app}\x3270is.dll; WorkingDir: {app}; StatusMsg: "Unregistering Controls..."; Flags: runminimized; Tasks: com; RunOnceId: "unregister"
 
 [UninstallDelete]
 Type: dirifempty; Name: "{app}"
